@@ -1,0 +1,84 @@
+<html>
+<head>
+<style>
+img {
+  display: inline-block;
+  border: 1px solid black;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+}
+
+#parameter {
+  font-family: monospace;
+  width: 50%;
+  height: 140px;
+}
+</style>
+<script src="./autocrop.js"></script>
+</head>
+<body>
+<h1>autocrop.js test page</h1>
+<div class="wrap">
+  <div class="form">
+    <p>Choose a image</p>
+    <input type="file" onchange="loadFile(this.files)"/>
+    <p>Or, run with the sample image (the logo of <a href="https://zerobased.co">zerobased.co</a>)</p>
+    <input type="button" value="Load sample image" onclick="process('sample.png')"/>
+    <h2>Parameter</h2>
+    <textarea id="parameter">{
+    bgColor: '#FFFFFF',
+    alphaTolerance: 20,
+    colorTolerance: 20,
+    invertTolerance: 0.90,
+    margin: '2%',
+    allowInvert: true,
+    marker: 'cropped'
+}</textarea>
+  </div>
+
+  <h2>Original</h2>
+  <div id="original">
+  </div>
+
+  <h2>Result</h2>
+  <div id="target">
+  </div>
+</div>
+</body>
+<script>
+function loadFile(files) {
+  let reader = new FileReader();
+  reader.readAsDataURL(files[0]);
+  reader.onload = function (e) {
+    process(e.target.result);
+  };
+}
+
+function process(src) {
+  const options = eval('(' + document.getElementById('parameter').value + ')');
+  const original = document.getElementById('original');
+  const target = document.getElementById('target');
+
+  original.innerHTML = ''
+  target.innerHTML = ''
+
+  let oimage = document.createElement('img');
+  oimage.onload = function () {
+    let timage = document.createElement('img');
+    target.appendChild(timage);
+    autocrop(oimage, timage, options);
+  }
+  oimage.src = src;
+  original.appendChild(oimage);
+}
+</script>
+</html>
