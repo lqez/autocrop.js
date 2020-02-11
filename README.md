@@ -3,6 +3,8 @@ autocrop.js
 
 `autocrop` crops transparency area of given image.
 
+Demo site: <https://lqez.github.io/autocrop.js/>
+
 
 Usage
 -----
@@ -27,6 +29,12 @@ const autoCropDefaultOptions = {
   marker: 'cropped'         // Add a marker attribute to prevent duplicated cropping.
 };
 ```
+
+Example
+-------
+
+![Example image of autocrop.js](./example.png)
+
 
 License
 -------
