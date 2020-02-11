@@ -1,7 +1,7 @@
 autocrop.js
 ===========
 
-`autocrop` crops transparency area of given image.
+`autocrop` crops transparency area of the given image.
 
 Demo site: <https://lqez.github.io/autocrop.js/>
 
@@ -10,7 +10,7 @@ Usage
 -----
 
 ```javascript
-autocrop(<original_image_element>, (target_image_element), (options)
+autocrop(<original_image_element>, (target_image_element), (options));
 ```
 
 If `target_image_element` is omitted, it will replace `original_image_element` with the cropped result.
