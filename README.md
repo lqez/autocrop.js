@@ -5,12 +5,22 @@ autocrop.js
 
 Demo site: <https://lqez.github.io/autocrop.js/>
 
+Install
+-------
+
+```bash
+$ npm install autocrop
+```
 
 Usage
 -----
 
 ```javascript
+<script src='path/to/autocrop.js'></script>
+...
+<script>
 autocrop(<original_image_element>, (target_image_element), (options));
+</script>
 ```
 
 If `target_image_element` is omitted, it will replace `original_image_element` with the cropped result.
